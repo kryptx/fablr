@@ -2,10 +2,12 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', []).
-  controller('MyCtrl1', [function() {
+angular.module('fablr.controllers', []).
+	controller('Login', ['$scope', 'user', function($scope, user) {
+		user.get(function(data) {
+			$scope.user = data;
+		});
+	}])
+	.controller('Home', [function() {
 
-  }])
-  .controller('MyCtrl2', [function() {
-
-  }]);
+	}]);
