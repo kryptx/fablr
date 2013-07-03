@@ -1,7 +1,7 @@
 <form ng-submit="createPage">
     Title <input type="text" ng-model="title" placeholder="Story Title" />
     <br />
-    Category <input type="text" ng-model="category" placeholder="Category" />
+    Category <select ng-model="category" ng-options="c.name group by c.type for c in categories"></select>
     <br />
     First page content <textarea ng-model="firstPage"></textarea>
 </form>
