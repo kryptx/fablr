@@ -2,12 +2,8 @@
 
 /* Services */
 
-
-// Demonstrate how to register services
-// In this case it is a simple value service.
 angular.module('fablr.services', []).
-	value('version', '0.1').
-	factory('user', ['$http', function($http) {
+	factory('User', ['$http', function($http) {
 		return {
 			get: function(callback) {
 				$http.get('http://api.fablr.com:8080/author', { withCredentials: true }).success(function(data) {
@@ -17,4 +13,14 @@ angular.module('fablr.services', []).
 				});
 			}
 		}
-	}]);
+	}]).
+	value('Categories', [
+		{ name: 'Adventure', type: 'Stories' },
+		{ name: 'Drama', type: 'Stories' },
+		{ name: 'Mystery', type: 'Stories' },
+		{ name: 'Suspense', type: 'Stories' },
+		{ name: 'Computers', type: 'Guides' },
+		{ name: 'Financial', type: 'Guides' },
+		{ name: 'Homeowner', type: 'Guides' },
+		{ name: 'Medicine', type: 'Guides' }
+	]);

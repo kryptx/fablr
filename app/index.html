@@ -2,7 +2,7 @@
 <html lang="en" ng-app="fablr">
 <head>
     <meta charset="utf-8">
-    <title>My AngularJS App</title>
+    <title>Fablr</title>
     <link rel="stylesheet" href="css/app.css"/>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
@@ -11,14 +11,15 @@
     <div class="container">
         <div class="navbar">
             <div class="navbar-inner">
-                <a class="brand" href="#">Fablr</a>
+                <a class="brand" href="/home">Fablr</a>
                 <ul class="nav">
-                    <li><a href="#/home">Home</a></li>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/story">New Story</a></li>
                 </ul>
+                <div class="navbar-text pull-right" ng-include="'partials/login.html'"></div>
             </div>
         </div>
     </div>
-    <div ng-include="'partials/login.html'" ng-controller="Login"></div>
 
     <div ng-view></div>
 
