@@ -1,0 +1,6 @@
+<div>
+    {{ pageBody }}
+</div>
+<div ng-repeat="option in options">
+    <button ng-click="loadPage(option.target)" value="{{ option.optionText }}" />
+</div>

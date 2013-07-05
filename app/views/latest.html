@@ -1,0 +1,3 @@
+<ul ng-repeat="story in stories">
+    <li><a ng-href="/story/{{story._id}}">{{ story.title }}</a> by <a ng-href="/author/{{ story.author._id }}">{{ story.author.penName }}</a></li>
+</ul>

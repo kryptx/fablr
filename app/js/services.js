@@ -3,10 +3,10 @@
 /* Services */
 
 angular.module('fablr.services', []).
-	factory('User', ['$http', function($http) {
+	factory('User', ['$http', 'APIUrl', function($http, APIUrl) {
 		return {
 			get: function(callback) {
-				$http.get('http://api.fablr.com:8080/author', { withCredentials: true }).success(function(data) {
+				$http.get(APIUrl + '/author', { withCredentials: true }).success(function(data) {
 					callback(data);
 				}).error(function() {
 					callback(false);
@@ -23,4 +23,5 @@ angular.module('fablr.services', []).
 		{ name: 'Financial', type: 'Guides' },
 		{ name: 'Homeowner', type: 'Guides' },
 		{ name: 'Medicine', type: 'Guides' }
-	]);
+	]).
+	value('APIUrl', 'http://api.fablr.com:8080');
