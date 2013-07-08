@@ -46,28 +46,34 @@ angular.module('fablr.controllers', ['fablr.services']).
 	}]).
 
 	controller('Story', ['$scope', '$rootScope', '$http', 'APIUrl', '$routeParams', function($scope, $rootScope, $http, APIUrl, $routeParams) {
+
+		$scope.pages = [];
+		$scope.showOptionForm = false;
+
 		$http.get(APIUrl + '/story/' + $routeParams.id).
 			success(function(data, status) {
 				$rootScope.story = data;
-				$rootScope.previousPage = $rootScope.currentPage;
-				$rootScope.currentPage = data.firstPage;
-			}).
-			error(function(data, status) {
-				// display some kind of error modal?
-			});
-	}]).
-
-	controller('Page', ['$scope', '$rootScope', '$http', 'APIUrl', function($scope, $rootScope, $http, APIUrl) {
-		$rootScope.$watch('currentPage', function() {
-			if($rootScope.currentPage) {
-				$http.get(APIUrl + '/page/' + $rootScope.currentPage).
+				$http.get(APIUrl + '/page/' + data.firstPage).
 					success(function(pageData, status) {
-						$scope.page = pageData;
-						$scope.apply();
+						$scope.pages = [ pageData ];
 					}).
 					error(function(data, status) {
 						// display some kind of error modal?
 					});
-			}
-		});
+			}).
+			error(function(data, status) {
+				// display some kind of error modal?
+			});
+
+		$scope.newOption = function() {
+			$scope.showOptionForm = true;
+		};
+
+		$scope.hide = function() {
+			$scope.showOptionForm = false;
+		}
+	}]).
+
+	controller('Option', ['$scope', '$rootScope', '$http', 'APIUrl', '$routeParams', function($scope, $rootScope, $http, APIUrl, $routeParams) {
+
 	}]);

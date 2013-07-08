@@ -1,7 +1,7 @@
 'use strict';
 
 // Declare app level module which depends on filters, and services
-angular.module('fablr', ['fablr.filters', 'fablr.services', 'fablr.directives', 'fablr.controllers']).
+angular.module('fablr', ['fablr.filters', 'fablr.services', 'fablr.directives', 'fablr.controllers', 'ui.bootstrap']).
 	config(['$routeProvider', '$locationProvider', '$httpProvider', function($routeProvider, $locationProvider, $httpProvider) {
 
 		$routeProvider.when('/home', {templateUrl: '/views/home.html'});

@@ -1,0 +1,21 @@
+<form>
+    Button text: <input type="text" ng-model="optionText" /><br />
+    Link to:
+    <span class="btn-group">
+        <button class="btn btn-primary" ng-model="optionType" btn-radio="'new'">New Page</button>
+        <button class="btn btn-primary" ng-model="optionType" btn-radio="'existing'">Existing Page</button>
+    </span>
+    <br />
+
+    <span ng-show="optionType == 'new'">
+        Page content: <textarea ng-model="pageBody"></textarea>
+        <button class="btn btn-large">Submit</button>
+    </span>
+
+    <span ng-show="optionType == 'existing'">
+        Page ID: <input type="text" ng-model="pageId" />
+        <button class="btn btn-large">Submit</button>
+    </span>
+
+    <button class="btn btn-danger" ng-click="hide()" />Cancel</button>
+</form>

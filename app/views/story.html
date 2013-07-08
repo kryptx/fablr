@@ -1,1 +1,13 @@
-<div ng-include="'/partials/pageContent.html'" ng-controller="Page"></div>
+<div ng-repeat="page in pages">
+    Page by <b>{{ page.author.penName }}</b><br />
+    <span class="pull-right">
+    Score: {{ page.upvotes - page.downvotes }}
+    <button ng-hide="!user" class="btn" value ="+1">+1</button>
+    <button ng-hide="!user" class="btn" value ="-1">-1</button>
+    </span>
+
+    <p class="hero-unit">{{ page.body }}</p>
+    <button class="btn btn-info" ng-repeat="option in page.options" ng-click="addPage(option.target)">{{ option.optionText }}</button>
+    <button class="btn btn-success" ng-click="newOption()" ng-show="user">Create a new option on this page.</button>
+</div>
+<div ng-include="'/partials/newOptionForm.html'" ng-show="showOptionForm" ng-controller="Option"></div>
